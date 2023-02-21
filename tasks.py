@@ -83,6 +83,9 @@ def task10(string: str) -> tuple[str, [None, str]]:
     (подсказка: для получения центральной буквы, найдите длину строки и разделите ее пополам.
     Для создания результирующий строки используйте срез)
     """
+    return (string[int(len(string) / 2)], string[1:len(string)]) \
+        if string[int(len(string) / 2)] is string[0] \
+        else (string[int(len(string) / 2)], None)
 
 
 def task11(string: str) -> bool:
