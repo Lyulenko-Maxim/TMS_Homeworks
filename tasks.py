@@ -100,6 +100,7 @@ def task12(string: str, symbol: str) -> int:
     """
     Напишите функцию которая возвращает сколько раз символ встречается в строке
     """
+    return string.count(symbol)
 
 
 def task13(number: int) -> bool:
