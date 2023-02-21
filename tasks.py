@@ -83,7 +83,7 @@ def task10(string: str) -> tuple[str, [None, str]]:
     (подсказка: для получения центральной буквы, найдите длину строки и разделите ее пополам.
     Для создания результирующий строки используйте срез)
     """
-    return (string[int(len(string) / 2)], string[1:len(string)]) \
+    return (string[int(len(string) / 2)], string[1:len(string) - 1]) \
         if string[int(len(string) / 2)] is string[0] \
         else (string[int(len(string) / 2)], None)
 
@@ -93,6 +93,7 @@ def task11(string: str) -> bool:
     Напишите функцию которая проверяет является ли строка палиндромом.
     Палиндром — это слово или фраза, которые одинаково читаются слева направо и справа налево.
     """
+    return True if string[::] == string[::-1] else False
 
 
 def task12(string: str, symbol: str) -> int:
