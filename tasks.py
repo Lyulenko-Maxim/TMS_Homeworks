@@ -31,6 +31,7 @@ def task4(string: str) -> str:
     На вход подаётся строка.
     Вернуть строку равную предпоследнему символу введенной строки.
     """
+    return string[-2]
 
 
 def task5(string: str) -> str:
