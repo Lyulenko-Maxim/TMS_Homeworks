@@ -39,6 +39,7 @@ def task5(string: str) -> str:
     На вход подаётся строка.
     Вернуть строку равную первым пяти символам введенной строки.
     """
+    return string[:5]
 
 
 def task6(string: str) -> str:
