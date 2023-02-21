@@ -22,6 +22,8 @@ def task3(a: [float, int], b: [float, int]) -> [float, int]:
     Даны два катета прямоугольного треугольника.
     Вернуть длину гипотенузы.
     """
+#   return int(math.sqrt(a ** 2 + b ** 2))
+    return int((a ** 2 + b ** 2)**0.5)
 
 
 def task4(string: str) -> str:
