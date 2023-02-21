@@ -168,6 +168,16 @@ def micro_calc(a: [float, int], b: [float, int], sign: str) -> [float, int, str]
     Необходимо вернуть результат арифметической операции
     В случае ошибки вычислений или неизвестного знака вернуть строку "error"
     """
+    try:
+        return {
+            sign == '+': (a + b),
+            sign == '-': (a - b),
+            sign == '*': (a * b),
+            sign == ':': (a / b),
+            sign == '^': (a ** b),
+        }[True]
+    except Exception:
+        raise TaskException
 
 
 def big_letters(phrase: str) -> str:
