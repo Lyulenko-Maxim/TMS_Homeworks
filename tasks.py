@@ -107,6 +107,7 @@ def task13(number: int) -> bool:
     """
     Дано число. Если это число делится на 1000 без остатка, то верните True иначе False
     """
+    return True if number % 1000 is 0 else False
 
 
 def task14(guests_count: int) -> str:
