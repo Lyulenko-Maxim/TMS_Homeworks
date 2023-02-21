@@ -63,7 +63,7 @@ def task8(string: str) -> str:
     На вход подаётся строка.
     Вернуть строку равную третьему символу введенной строки.
     """
-
+    return string[2]
 
 def task9(string: str) -> str:
     """
