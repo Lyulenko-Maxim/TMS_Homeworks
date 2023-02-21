@@ -14,6 +14,7 @@ def task2(a: [float, int]) -> tuple[[float, int], [float, int]]:
     Дана длина ребра куба.
     Вернуть кортеж с объемом куба и площадью его боковой поверхности.
     """
+    return (a ** 3), (a ** 2)
 
 
 def task3(a: [float, int], b: [float, int]) -> [float, int]:
