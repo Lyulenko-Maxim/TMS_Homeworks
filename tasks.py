@@ -177,7 +177,7 @@ def micro_calc(a: [float, int], b: [float, int], sign: str) -> [float, int, str]
             sign == '^': (a ** b),
         }[True]
     except Exception:
-        raise TaskException
+        raise TaskException("error")
 
 
 def big_letters(phrase: str) -> str:
