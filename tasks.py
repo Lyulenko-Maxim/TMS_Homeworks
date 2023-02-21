@@ -22,8 +22,8 @@ def task3(a: [float, int], b: [float, int]) -> [float, int]:
     Даны два катета прямоугольного треугольника.
     Вернуть длину гипотенузы.
     """
-#   return int(math.sqrt(a ** 2 + b ** 2))
-    return int((a ** 2 + b ** 2)**0.5)
+    #   return int(math.sqrt(a ** 2 + b ** 2))
+    return int((a ** 2 + b ** 2) ** 0.5)
 
 
 def task4(string: str) -> str:
@@ -65,12 +65,14 @@ def task8(string: str) -> str:
     """
     return string[2]
 
+
 def task9(string: str) -> str:
     """
     Дана строка. Если длина строки больше 10 символов, то вернуть новую строку
     с 3 восклицательными знаками в конце ('!!!') и вывести на экран.
     Если меньше 10, то вывести на экран второй символ строки
     """
+    return f"{string}!!!" if len(string) > 10 else string[1]
 
 
 def task10(string: str) -> tuple[str, [None, str]]:
