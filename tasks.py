@@ -1,4 +1,5 @@
 from exceptions import TaskException
+import re
 
 
 def task1(x: [float, int], y: [float, int]) -> [float, int]:
@@ -212,6 +213,60 @@ def big_letters(phrase: str) -> str:
       T   U   U  V V  W W W X   X   Y   Z
       T    UUU    V    W W  X   X   Y   ZZZZZ
     """
+    if re.fullmatch(r"^\s*$", phrase):
+        return ""
+
+    if not re.fullmatch(r"^[A-Za-z\s]*$", phrase):
+        raise TaskException("error")
+
+    letters = str('\
+ AAA  BBBB   CCC  DDDD  EEEEE FFFFF  GGG  H   H IIIII JJJJJ K   K L     M   M N   N  OOO  PPPP   QQQ  RRRR   SSS  TTTTT U   U V   V W   W X   X Y   Y ZZZZZ \
+A   A B   B C   C D   D E     F     G   G H   H   I       J K  K  L     MM MM NN  N O   O P   P Q   Q R   R S   S   T   U   U V   V W   W X   X Y   Y     Z \
+A   A B   B C     D   D E     F     G     H   H   I       J K K   L     M M M N   N O   O P   P Q   Q R   R S       T   U   U V   V W   W  X X   Y Y     Z  \
+AAAAA BBBB  C     D   D EEEEE FFFFF G GGG HHHHH   I       J KK    L     M   M N N N O   O PPPP  Q   Q RRRR   SSS    T   U   U V   V W W W   X     Y     Z   \
+A   A B   B C     D   D E     F     G   G H   H   I       J K K   L     M   M N   N O   O P     Q Q Q R R       S   T   U   U V   V W W W  X X    Y    Z    \
+A   A B   B C   C D   D E     F     G   G H   H   I       J K  K  L     M   M N  NN O   O P     Q  QQ R  R  S   S   T   U   U  V V  W W W X   X   Y   Z     \
+A   A BBBB   CCC  DDDD  EEEEE F      GGG  H   H IIIII JJJJ  K   K LLLLL M   M N   N  OOO  P      QQQQ R   R  SSS    T    UUU    V    W W  X   X   Y   ZZZZZ ')
+
+    alphabet = list(set(letters))
+    alphabet.sort()
+    alphabet.pop(0)
+
+    letters_array = re.sub(r"\s", "0", letters)
+    letters_array = list(re.sub(r"[^0]", "1", letters_array))
+    k = 0
+    letters_matrix = [[0] * int(len(letters_array) / 7) for i in range(7)]
+    for i in range(7):
+        for j in range(int(len(letters_array) / 7)):
+            letters_matrix[i][j] = letters_array[k]
+            k += 1
+
+    phrase = phrase.upper()
+    phrase = phrase.strip()
+
+    big_message = ""
+    for j in range(7):
+        for i in range(len(phrase)):
+            draw_letter = [[0] * 6 * len(phrase) for z in range(7)]
+            if phrase[i] == " ":
+                for h in range(6):
+                    draw_letter[j][h] = " "
+                    big_message += draw_letter[j][h]
+            else:
+                ind = alphabet.index(phrase[i])
+                for h in range(6):
+                    if letters_matrix[j][h + ind * 6] == "1":
+                        draw_letter[j][h] = phrase[i]
+                    else:
+                        draw_letter[j][h] = " "
+                    big_message += draw_letter[j][h]
+        while big_message[len(big_message) - 1] == " ":
+            big_message = big_message[:len(big_message) - 1]
+
+        if j < 6:
+            big_message += "\n"
+
+    return big_message
 
 
 def perfect_square(square: str) -> bool:
