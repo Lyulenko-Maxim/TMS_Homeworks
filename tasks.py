@@ -6,7 +6,7 @@ def task1(x: [float, int], y: [float, int]) -> [float, int]:
     Даны действительные числа x и y.
     Вернуть (|x| − |y|) / (1+ |xy|)
     """
-    return int(abs(x) - abs(y)) / (1 + abs(x * y))
+    return (abs(x) - abs(y)) / (1 + abs(x * y))
 
 
 def task2(a: [float, int]) -> tuple[[float, int], [float, int]]:
