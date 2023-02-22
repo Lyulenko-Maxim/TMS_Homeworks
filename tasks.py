@@ -15,7 +15,10 @@ def task2(a: [float, int]) -> tuple[[float, int], [float, int]]:
     Дана длина ребра куба.
     Вернуть кортеж с объемом куба и площадью его боковой поверхности.
     """
-    return (a ** 3), (a ** 2)
+    if a > 0:
+        return (a ** 3), (a ** 2)
+    else:
+        raise TaskException
 
 
 def task3(a: [float, int], b: [float, int]) -> [float, int]:
@@ -24,7 +27,10 @@ def task3(a: [float, int], b: [float, int]) -> [float, int]:
     Вернуть длину гипотенузы.
     """
     #   return int(math.sqrt(a ** 2 + b ** 2))
-    return int((a ** 2 + b ** 2) ** 0.5)
+    if (a and b) > 0:
+        return int((a ** 2 + b ** 2) ** 0.5)
+    else:
+        raise TaskException
 
 
 def task4(string: str) -> str:
@@ -117,10 +123,13 @@ def task14(guests_count: int) -> str:
     Если их будет больше 50 - закажут ресторан, если от 20 до 50 - кафе, а если меньше 20 - отпразднуют дома.
     Вернуть "ресторан", "кафе", "дом" в зависимости от количества гостей.
     """
-    return {guests_count > 50: "ресторан",
-            20 <= guests_count <= 50: "кафе",
-            guests_count < 20: "дом",
-            }.get(True)
+    if guests_count > 0:
+        return {guests_count > 50: "ресторан",
+                20 <= guests_count <= 50: "кафе",
+                guests_count < 20: "дом",
+                }.get(True)
+    else:
+        raise TaskException
 
 
 def task15(number: int) -> tuple[int, int]:
@@ -268,6 +277,8 @@ A   A BBBB   CCC  DDDD  EEEEE F      GGG  H   H IIIII JJJJ  K   K LLLLL M   M N 
 
     return big_message
 
+    # переделать через чар код по строке или по матрице?
+
 
 def perfect_square(square: str) -> bool:
     """
@@ -277,6 +288,25 @@ def perfect_square(square: str) -> bool:
      - Правильные квадраты могут содержать только '.' и необязательно '\n' (перевод строки).
      - Идеальные квадраты должны иметь одинаковую ширину и высоту.
     """
+    indexes = [i for i, c in enumerate(square) if c == "\n"]
+    print(indexes)
+    dots = square.replace('\n', '')
+    if not re.fullmatch(r'^\.+$', dots):
+        return False
+    dots_sqrt = (len(dots) ** 0.5)
+    print(dots_sqrt)
+    print(len(indexes))
+    if (dots_sqrt * 10) % 10 == 0 \
+            and (len(indexes) % (dots_sqrt - 1) == 0) or (len(indexes) % dots_sqrt == 0):
+        print("here")
+        for i in range(len(indexes)):
+            if indexes[i] != dots_sqrt + i * (dots_sqrt + 1):
+                return False
+        return True
+    else:
+        return False
+
+    # ПОКА НЕ ВОРКАЕТ
 
 
 def task_with_square_brackets(string_input: str) -> str:
