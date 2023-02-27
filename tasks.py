@@ -91,7 +91,7 @@ def task10(string: str) -> tuple[str, [None, str]]:
     Для создания результирующий строки используйте срез)
     """
     return (string[int(len(string) / 2)], string[1:len(string) - 1]) \
-        if string[int(len(string) / 2)] is string[0] \
+        if string[int(len(string) / 2)] == string[0] \
         else (string[int(len(string) / 2)], None)
 
 
@@ -114,7 +114,7 @@ def task13(number: int) -> bool:
     """
     Дано число. Если это число делится на 1000 без остатка, то верните True иначе False
     """
-    return True if number % 1000 is 0 else False
+    return True if number % 1000 == 0 else False
 
 
 def task14(guests_count: int) -> str:
@@ -289,16 +289,16 @@ def perfect_square(square: str) -> bool:
      - Идеальные квадраты должны иметь одинаковую ширину и высоту.
     """
     indexes = [i for i, c in enumerate(square) if c == "\n"]
-    print(indexes)
+    # print(indexes)
     dots = square.replace('\n', '')
     if not re.fullmatch(r'^\.+$', dots):
         return False
     dots_sqrt = (len(dots) ** 0.5)
-    print(dots_sqrt)
-    print(len(indexes))
+    # print(dots_sqrt)
+    # print(len(indexes))
     if (dots_sqrt * 10) % 10 == 0 \
             and (len(indexes) % (dots_sqrt - 1) == 0) or (len(indexes) % dots_sqrt == 0):
-        print("here")
+        # print("here")
         for i in range(len(indexes)):
             if indexes[i] != dots_sqrt + i * (dots_sqrt + 1):
                 return False
