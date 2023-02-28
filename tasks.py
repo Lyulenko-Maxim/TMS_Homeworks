@@ -318,3 +318,21 @@ def task_with_square_brackets(string_input: str) -> str:
      - вложенность может быть любая
      - строка на входе в функцию всегда валидна
     """
+
+    # РЕПЛЕЙСИМ ОТ (ИНДЕКС СКОБКИ -1) ДО ЗАКРЫВАЮЩЕЙ СКОБКИ НА РЕЗУЛЬТАТ
+    # ИТЕРАЦИЮ ПРОВОДИМ ПОКА НЕТ закрывающая скобки
+
+    # не знаю как реплейсить с конца поэтому:
+    # развернем строку и теперь будем идти сначала
+
+    digits = re.findall(r'\d+', string_input)
+    output = string_input[::-1]
+
+    while output.rfind("[") != -1:
+        numb = digits.pop(len(digits) - 1)
+        last_ind = output.find("[") + len(numb)
+        first_ind = output.rfind("]", 0, last_ind)
+        sub_str = output[first_ind:last_ind + 1]
+        output = output.replace(sub_str, output[first_ind + 1:last_ind - len(numb)] * int(numb), 1)
+
+    return output[::-1]
