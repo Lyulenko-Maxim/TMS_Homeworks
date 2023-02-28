@@ -2,6 +2,7 @@ from exceptions import TaskException
 import re
 from functools import reduce
 
+
 def task1(x: [float, int], y: [float, int]) -> [float, int]:
     """
     Даны действительные числа x и y.
@@ -152,6 +153,7 @@ def task17(n: int) -> float:
     Для заданного числа N составьте программу вычисления суммы
     S=1+1/2+1/3+1/4+...+1/N, где N – натуральное число
     """
+    return sum([1 / i for i in range(1, n + 1)])
 
 
 def task18(number: [int, float], func_number: int) -> float:
