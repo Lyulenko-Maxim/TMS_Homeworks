@@ -1,6 +1,6 @@
 from exceptions import TaskException
 import re
-
+from functools import reduce
 
 def task1(x: [float, int], y: [float, int]) -> [float, int]:
     """
@@ -136,6 +136,8 @@ def task15(number: int) -> tuple[int, int]:
     """
     Дано число. Найти сумму и произведение его цифр.
     """
+    return sum([int(i) for i in str(number)]), \
+        reduce(lambda a, b: a * b, [int(i) for i in str(number)])
 
 
 def task16(start: int, end: int) -> list[int]:
