@@ -1,6 +1,7 @@
 from exceptions import TaskException
-import re
 from functools import reduce
+import re
+import unitconvertor
 
 
 def task1(x: [float, int], y: [float, int]) -> [float, int]:
@@ -174,6 +175,7 @@ def task18(number: [int, float], func_number: int) -> float:
     11. Пинты в литры
     12. Литры в пинты
     """
+    return unitconvertor.__all__[func_number](number)
 
 
 def micro_calc(a: [float, int], b: [float, int], sign: str) -> [float, int, str]:
