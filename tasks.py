@@ -147,6 +147,18 @@ def task16(start: int, end: int) -> list[int]:
     Два натуральных числа называют дружественными, если каждое из них равно сумме всех делителей другого,
     кроме самого этого числа. Реализовать функцию для поиска всех пар дружественных чисел в заданном диапазоне
     """
+    lst = [i for i in range(start, end)]
+    result = []
+    for i in lst:
+        sum1 = sum([k for k in range(1, i) if i % k == 0])
+        if lst.__contains__(sum1) and sum1 != i:
+            sum2 = sum([k for k in range(1, sum1) if sum1 % k == 0])
+            if i == sum2:
+                result.append([i, sum1])
+                lst.remove(sum2)
+        else:
+            continue
+    return result
 
 
 def task17(n: int) -> float:
